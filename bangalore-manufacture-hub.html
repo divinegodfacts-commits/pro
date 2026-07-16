@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Bangalore Manufacture Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#C8890A;
+    --gold-light:#E3A93B;
+    --navy:#16213E;
+    --ink:#221C10;
+    --bg:#F7F5F0;
+    --card-border:#ECE6D8;
+    --muted:#8A8272;
+    --green:#2E7D46;
+    --red:#C0392B;
+    --radius:14px;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:#E9E5DC;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    display:flex;
+    justify-content:center;
+    min-height:100vh;
+  }
+  #phone{
+    width:100%;
+    max-width:430px;
+    min-height:100vh;
+    background:var(--bg);
+    position:relative;
+    box-shadow:0 0 40px rgba(0,0,0,0.12);
+    display:flex;
+    flex-direction:column;
+  }
+  h1,h2,h3,h4{font-family:'Poppins',sans-serif; margin:0;}
+  p{margin:0;}
+  button{font-family:'Inter',sans-serif; cursor:pointer; border:none;}
+  input,textarea,select{font-family:'Inter',sans-serif;}
+  ::-webkit-scrollbar{display:none;}
+
+  /* Top bar */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 18px; background:#fff; border-bottom:1px solid var(--card-border);
+    position:sticky; top:0; z-index:20;
+  }
+  .brand{display:flex; align-items:center; gap:10px; user-select:none;}
+  .brand-mark{
+    width:38px;height:38px;border-radius:10px;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff; font-family:'Poppins'; font-weight:800; font-size:16px;
+  }
+  .brand-text .l1{font-family:'Poppins'; font-weight:800; font-size:15px; letter-spacing:0.5px; color:var(--ink); line-height:1.1;}
+  .brand-text .l2{font-family:'Poppins'; font-weight:600; font-size:9.5px; letter-spacing:1.5px; color:var(--gold); line-height:1.3;}
+  .icon-btn{
+    width:36px;height:36px;border-radius:50%;background:var(--bg);
+    display:flex;align-items:center;justify-content:center; color:var(--ink);
+  }
+  .back-btn{background:none; font-size:20px; color:var(--ink); padding:4px;}
+
+  /* Hero */
+  .hero{padding:26px 20px 10px; text-align:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:6px;
+    border:1px solid var(--gold-light); color:var(--gold);
+    font-size:11px; font-weight:700; letter-spacing:1px;
+    padding:5px 14px; border-radius:20px; margin-bottom:14px;
+  }
+  .hero h1{font-size:28px; line-height:1.15; color:var(--ink);}
+  .hero .accent{color:var(--gold); display:block;}
+  .hero .tag{margin-top:10px; color:var(--muted); font-size:13.5px; letter-spacing:0.3px;}
+  .feature-row{display:flex; justify-content:center; gap:14px; margin-top:16px; flex-wrap:wrap; font-size:11.5px; color:var(--ink); font-weight:600;}
+  .feature-row span{display:flex; align-items:center; gap:5px;}
+
+  .section-pad{padding:16px 18px;}
+
+  /* Product option card (catalog) */
+  .opt-card{
+    border:1px solid var(--card-border); border-radius:var(--radius);
+    background:#fff; overflow:hidden; margin-bottom:16px;
+    display:flex; flex-direction:column;
+  }
+  .opt-img-wrap{
+    background:linear-gradient(160deg,#FBF7EE,#F1E9D8);
+    padding:18px; display:flex; align-items:center; justify-content:center;
+    min-height:150px;
+  }
+  .opt-img-wrap img{max-width:100%; max-height:150px; object-fit:contain;}
+  .opt-body{padding:14px 16px 16px;}
+  .badge-pill{
+    display:inline-block; background:var(--gold); color:#fff;
+    font-size:10.5px; font-weight:700; padding:4px 12px; border-radius:20px;
+    margin-bottom:8px; letter-spacing:0.3px;
+  }
+  .opt-body h3{font-size:19px; color:var(--ink);}
+  .opt-body .size-label{color:var(--muted); font-size:12.5px; margin-top:2px;}
+  .opt-feat{list-style:none; padding:0; margin:10px 0 14px; font-size:12.5px; color:#4A4438;}
+  .opt-feat li{display:flex; align-items:center; gap:6px; margin-bottom:5px;}
+  .price-row{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--navy); border-radius:10px; padding:10px 14px;
+  }
+  .price-row .amt-label{color:#B9C0D4; font-size:9.5px; letter-spacing:1px; font-weight:700;}
+  .price-row .amt{color:#fff; font-size:19px; font-weight:800; font-family:'Poppins';}
+  .price-row .flag{background:var(--gold-light); color:#fff; font-size:10px; font-weight:700; padding:6px 10px; border-radius:8px;}
+
+  .trust-strip{display:flex; justify-content:space-between; padding:14px 10px; margin-top:6px; border-top:1px solid var(--card-border); text-align:center;}
+  .trust-strip div{flex:1; font-size:10px; color:var(--muted); font-weight:600;}
+  .trust-strip .ti{font-size:17px; display:block; margin-bottom:4px;}
+  .footer-note{text-align:center; padding:16px; color:var(--muted); font-size:11.5px;}
+
+  /* Product detail */
+  .gallery{position:relative;}
+  .gallery-main{
+    background:linear-gradient(160deg,#FBF7EE,#F1E9D8);
+    min-height:230px; display:flex; align-items:center; justify-content:center; padding:20px;
+  }
+  .gallery-main img{max-width:100%; max-height:220px; object-fit:contain;}
+  .gallery-dots{display:flex; justify-content:center; gap:6px; padding:10px 0;}
+  .gallery-dots span{width:6px;height:6px;border-radius:50%;background:#D9D2C0;}
+  .gallery-dots span.on{background:var(--gold);}
+  .best-price-tag{position:absolute; top:14px; right:14px; text-align:right;}
+  .best-price-tag .bp{color:var(--gold); font-size:10px; font-weight:700; letter-spacing:1px;}
+  .best-price-tag .amt{font-size:22px; font-weight:800; font-family:'Poppins'; color:var(--ink);}
+  .best-price-tag .fd{background:var(--navy); color:#fff; font-size:9.5px; padding:3px 9px; border-radius:6px; display:inline-block; margin-top:2px;}
+
+  .detail-title{padding:14px 18px 0;}
+  .detail-title .sz{background:var(--bg); border:1px solid var(--card-border); color:var(--ink); font-size:10.5px; font-weight:700; padding:4px 10px; border-radius:14px;}
+  .detail-title h2{font-size:22px; margin-top:8px;}
+  .detail-title .sub{color:var(--muted); font-size:13px; margin-top:3px;}
+
+  .feat-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:16px 18px 0;}
+  .feat-grid div{background:#fff; border:1px solid var(--card-border); border-radius:10px; padding:10px; font-size:11.5px; font-weight:600;}
+  .feat-grid .fi{font-size:16px; display:block; margin-bottom:4px;}
+  .feat-grid .fs{color:var(--muted); font-weight:500; display:block; font-size:10.5px;}
+
+  .about-block{padding:18px;}
+  .about-block h4{font-size:15px; margin-bottom:8px;}
+  .about-block p{font-size:13px; color:#4A4438; line-height:1.55;}
+  .check-list{list-style:none; padding:0; margin-top:12px;}
+  .check-list li{font-size:12.5px; margin-bottom:7px; display:flex; gap:7px; color:#3A3428;}
+  .check-list li:before{content:"✓"; color:var(--green); font-weight:800;}
+
+  .spec-box{margin:0 18px 18px; background:#fff; border:1px solid var(--card-border); border-radius:12px; padding:14px 16px;}
+  .spec-box h5{font-size:12.5px; letter-spacing:0.5px; margin-bottom:10px; display:flex; align-items:center; gap:6px;}
+  .spec-row{display:flex; justify-content:space-between; font-size:12.5px; padding:6px 0; border-bottom:1px dashed #EFE9DC;}
+  .spec-row:last-child{border:none;}
+  .spec-row .k{color:var(--muted);}
+  .spec-row .v{font-weight:600;}
+
+  .color-block{padding:0 18px 18px;}
+  .color-block h5{font-size:14px; margin-bottom:10px;}
+  .swatches{display:flex; gap:10px; flex-wrap:wrap;}
+  .swatch{
+    display:flex; flex-direction:column; align-items:center; gap:6px; cursor:pointer;
+  }
+  .sw-dot{width:38px;height:38px;border-radius:50%; border:2px solid transparent; position:relative;}
+  .swatch.active .sw-dot{border-color:var(--gold); box-shadow:0 0 0 2px #fff inset;}
+  .swatch span{font-size:10px; color:var(--muted); font-weight:600; max-width:60px; text-align:center;}
+
+  .sticky-buy{
+    position:sticky; bottom:0; background:#fff; border-top:1px solid var(--card-border);
+    padding:12px 18px; display:flex; align-items:center; gap:12px; z-index:15;
+  }
+  .sticky-buy .pinfo{flex:0 0 auto;}
+  .sticky-buy .pinfo .amt{font-size:19px; font-weight:800; font-family:'Poppins';}
+  .sticky-buy .pinfo .fd{font-size:10px; color:var(--green); font-weight:700;}
+  .btn-gold{
+    flex:1; background:linear-gradient(135deg,var(--gold-light),var(--gold)); color:#fff;
+    font-weight:700; font-size:14.5px; padding:13px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center; gap:8px; letter-spacing:0.3px;
+  }
+  .btn-gold:active{filter:brightness(0.95);}
+  .btn-outline{background:#fff; border:1.5px solid var(--card-border); color:var(--ink); font-weight:700; font-size:13.5px; padding:12px; border-radius:10px;}
+
+  /* Checkout */
+  .steps{display:flex; align-items:center; justify-content:center; padding:16px 10px 8px; gap:4px;}
+  .step{display:flex; flex-direction:column; align-items:center; gap:4px; flex:0 0 auto;}
+  .step .dot{width:26px;height:26px;border-radius:50%; background:#DDD6C4; color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center;}
+  .step.on .dot{background:var(--gold);}
+  .step .lbl{font-size:9.5px; color:var(--muted); font-weight:700;}
+  .step.on .lbl{color:var(--gold);}
+  .step-line{width:30px; height:1.5px; background:var(--card-border); margin-bottom:14px;}
+
+  .panel{margin:0 18px 16px; background:#fff; border:1px solid var(--card-border); border-radius:var(--radius); padding:16px;}
+  .panel-head{display:flex; align-items:center; gap:8px; font-weight:700; font-size:14px; margin-bottom:12px;}
+  .cart-row{display:flex; gap:12px;}
+  .cart-row img{width:80px;height:80px;object-fit:contain; background:var(--bg); border-radius:10px; padding:6px;}
+  .cart-row .badge-pill{font-size:9px; padding:3px 9px;}
+  .cart-row h4{font-size:15.5px; margin-top:6px;}
+  .cart-row .meta{font-size:11.5px; color:var(--muted); margin-top:3px; display:flex; gap:6px; align-items:center;}
+  .color-dot-sm{width:12px;height:12px;border-radius:50%; display:inline-block;}
+  .cart-row .cprice{margin-top:6px; font-weight:800; color:var(--gold); font-family:'Poppins'; font-size:15px;}
+
+  .field{margin-bottom:12px;}
+  .field label{font-size:12px; font-weight:600; color:#4A4438; display:block; margin-bottom:6px;}
+  .field input,.field textarea{
+    width:100%; border:1px solid var(--card-border); background:var(--bg);
+    border-radius:9px; padding:11px 12px; font-size:13.5px; color:var(--ink);
+  }
+  .field input:focus,.field textarea:focus{outline:2px solid var(--gold-light); background:#fff;}
+  .hint{font-size:10.5px; color:var(--muted); margin-top:5px; display:flex; gap:4px; align-items:center;}
+  .err{font-size:10.5px; color:var(--red); margin-top:5px;}
+
+  .price-line{display:flex; justify-content:space-between; font-size:13px; padding:6px 0; color:#4A4438;}
+  .price-line.total{border-top:1px dashed var(--card-border); margin-top:6px; padding-top:12px; font-weight:800; font-size:15px; color:var(--ink);}
+  .price-line.total .v{color:var(--ink); font-family:'Poppins';}
+
+  .bottom-pay{
+    position:sticky; bottom:0; background:#fff; border-top:1px solid var(--card-border);
+    padding:14px 18px; display:flex; align-items:center; gap:14px;
+  }
+  .bottom-pay .tp .lbl{font-size:10px; color:var(--muted); font-weight:700;}
+  .bottom-pay .tp .amt{font-size:20px; font-weight:800; font-family:'Poppins';}
+
+  /* success */
+  .success-wrap{padding:60px 26px; text-align:center;}
+  .success-icon{width:74px;height:74px;border-radius:50%; background:#E9F6EC; color:var(--green); display:flex; align-items:center; justify-content:center; font-size:34px; margin:0 auto 18px;}
+  .success-wrap h2{font-size:21px;}
+  .success-wrap p{color:var(--muted); font-size:13.5px; margin-top:8px; line-height:1.6;}
+  .order-id{margin-top:16px; background:var(--bg); border:1px dashed var(--card-border); border-radius:10px; padding:10px; font-size:13px; font-weight:700; letter-spacing:0.5px;}
+
+  /* Admin */
+  .admin-login-wrap{padding:70px 26px; text-align:center;}
+  .lock-badge{width:60px;height:60px;border-radius:16px; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; font-size:26px; margin:0 auto 18px;}
+  .admin-tabs{display:flex; gap:8px; padding:14px 18px 0;}
+  .admin-tab{flex:1; text-align:center; padding:10px; border-radius:10px; font-size:12.5px; font-weight:700; background:#fff; border:1px solid var(--card-border); color:var(--muted);}
+  .admin-tab.on{background:var(--navy); color:#fff; border-color:var(--navy);}
+  .admin-card{margin:14px 18px; background:#fff; border:1px solid var(--card-border); border-radius:12px; padding:14px;}
+  .admin-card h4{font-size:14.5px;}
+  .admin-card .meta{font-size:11.5px; color:var(--muted); margin-top:4px;}
+  .admin-row{display:flex; gap:10px; align-items:center;}
+  .admin-row img{width:56px;height:56px;object-fit:contain; background:var(--bg); border-radius:8px; padding:4px;}
+  .admin-actions{display:flex; gap:8px; margin-top:10px;}
+  .mini-btn{flex:1; padding:9px; border-radius:8px; font-size:12px; font-weight:700; text-align:center;}
+  .mini-btn.edit{background:var(--bg); color:var(--ink); border:1px solid var(--card-border);}
+  .mini-btn.del{background:#FBEAE8; color:var(--red);}
+  .mini-btn.gold{background:var(--gold); color:#fff;}
+  .fab{
+    position:fixed; bottom:22px; right:calc(50% - 197px); width:52px;height:52px;border-radius:50%;
+    background:var(--gold); color:#fff; font-size:26px; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 18px rgba(200,137,10,0.45); z-index:30;
+  }
+  .color-chip-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;}
+  .color-chip{display:flex; align-items:center; gap:6px; background:var(--bg); border:1px solid var(--card-border); border-radius:20px; padding:4px 8px 4px 4px; font-size:11px;}
+  .color-chip .cd{width:16px;height:16px;border-radius:50%;}
+  .color-chip .x{color:var(--red); font-weight:800; padding:0 3px;}
+  .img-thumbs{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;}
+  .img-thumb{position:relative; width:60px;height:60px;}
+  .img-thumb img{width:100%;height:100%;object-fit:cover;border-radius:8px; border:1px solid var(--card-border);}
+  .img-thumb .x{position:absolute; top:-6px; right:-6px; width:18px;height:18px;border-radius:50%; background:var(--red); color:#fff; font-size:11px; display:flex; align-items:center; justify-content:center;}
+  .upload-box{
+    border:1.5px dashed var(--card-border); border-radius:10px; padding:14px; text-align:center; font-size:12px; color:var(--muted); font-weight:600; margin-top:8px;
+  }
+  .empty-state{padding:50px 26px; text-align:center; color:var(--muted);}
+  .empty-state .ei{font-size:30px; display:block; margin-bottom:10px;}
+  .toast{
+    position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+    background:var(--ink); color:#fff; padding:10px 18px; border-radius:20px; font-size:12.5px; z-index:100;
+    opacity:0; pointer-events:none; transition:opacity .25s;
+  }
+  .toast.show{opacity:1;}
+  .order-status{font-size:10px; font-weight:700; padding:4px 10px; border-radius:20px;}
+  .order-status.new{background:#FFF3D6; color:#9A6A00;}
+  .order-status.done{background:#E4F6E9; color:var(--green);}
+  small.small-link{color:var(--gold); font-weight:700; font-size:12px;}
+  .placeholder-table{width:100%; height:100%; display:flex; align-items:center; justify-content:center;}
+</style>
+</head>
+<body>
+<div id="phone">
+  <div id="root"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------------- storage helpers ---------------- */
+async function sGet(key, shared){
+  try{ const r = await window.storage.get(key, !!shared); return r ? r.value : null; }
+  catch(e){ return null; }
+}
+async function sSet(key, value, shared){
+  try{ return await window.storage.set(key, value, !!shared); }
+  catch(e){ console.error('storage set failed', e); return null; }
+}
+async function sDelete(key, shared){
+  try{ return await window.storage.delete(key, !!shared); } catch(e){ return null; }
+}
+async function sList(prefix, shared){
+  try{ const r = await window.storage.list(prefix, !!shared); return r ? r.keys : []; } catch(e){ return []; }
+}
+
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function inr(n){ return '₹'+Number(n).toLocaleString('en-IN'); }
+function esc(s){ return (s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function toast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(window._toastT); window._toastT=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+const PLACEHOLDER_SVG = `data:image/svg+xml;utf8,` + encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140">
+<rect x="20" y="55" width="160" height="12" rx="4" fill="#8a6a3f"/>
+<rect x="30" y="67" width="8" height="45" fill="#3a2c1c"/>
+<rect x="162" y="67" width="8" height="45" fill="#3a2c1c"/>
+<rect x="50" y="80" width="8" height="32" fill="#3a2c1c"/>
+<rect x="142" y="80" width="8" height="32" fill="#3a2c1c"/>
+<circle cx="150" cy="60" r="9" fill="#2c2015"/>
+</svg>`);
+
+/* ---------------- default seed data ---------------- */
+function defaultProducts(){
+  return [
+    {
+      id: uid(),
+      active: true,
+      badge: 'BEST VALUE',
+      name: 'Study Table',
+      size: '3 x 2 Feet',
+      dims: '60 cm x 40 cm x 28 cm',
+      price: 699,
+      delivery: 90,
+      tagline: 'Compact. Comfortable. Built for You.',
+      description: 'Our 3 x 2 Feet Study Table is designed for comfort and convenience. Foldable, lightweight and durable — perfect for study, work or leisure.',
+      material: 'Engineered Wood Top, Metal Legs',
+      weight: 'Approx. 2.8 kg',
+      capacity: 'Up to 25 kg',
+      foldable: 'Yes',
+      images: [],
+      colors: [
+        {name:'Walnut Brown', hex:'#5C3A21'},
+        {name:'Maple Beige', hex:'#D8C39A'},
+        {name:'Classic Black', hex:'#2B2B2B'},
+        {name:'Cherry Pink', hex:'#D98A99'}
+      ]
+    },
+    {
+      id: uid(),
+      active: true,
+      badge: 'EXTRA SPACE',
+      name: 'Study Table',
+      size: '4 x 2 Feet',
+      dims: '75 cm x 40 cm x 28 cm',
+      price: 799,
+      delivery: 90,
+      tagline: 'More room to spread out and work.',
+      description: 'Our 4 x 2 Feet Study Table gives you extra surface area while staying foldable, lightweight and durable — great for study, work or leisure.',
+      material: 'Engineered Wood Top, Metal Legs',
+      weight: 'Approx. 3.2 kg',
+      capacity: 'Up to 25 kg',
+      foldable: 'Yes',
+      images: [],
+      colors: [
+        {name:'Walnut Brown', hex:'#5C3A21'},
+        {name:'Classic Black', hex:'#2B2B2B'}
+      ]
+    }
+  ];
+}
+
+/* ---------------- app state ---------------- */
+const App = {
+  products: [],
+  orders: [],
+  view: 'home',          // home | detail | checkout | success | adminLogin | admin
+  selectedId: null,
+  selectedColor: 0,
+  lastOrder: null,
+  adminTab: 'products',
+  editingProduct: null,   // product object being edited in admin, or 'new'
+  logoTaps: 0,
+  logoTapTimer: null,
+  adminPass: 'manufacture123',
+
+  normalizeProduct(p){
+    return Object.assign({
+      id: uid(), active: true, badge: '', name: 'Study Table', size: '', dims: '',
+      price: 0, delivery: 0, tagline: '', description: '', material: '', weight: '',
+      capacity: '', foldable: 'Yes', images: [], colors: []
+    }, p, {
+      images: Array.isArray(p && p.images) ? p.images : [],
+      colors: Array.isArray(p && p.colors) ? p.colors : []
+    });
+  },
+
+  async init(){
+    let raw = await sGet('products', true);
+    if(!raw){
+      this.products = defaultProducts();
+      await sSet('products', JSON.stringify(this.products), true);
+    } else {
+      try{ this.products = JSON.parse(raw).map(p=>this.normalizeProduct(p)); } catch(e){ this.products = defaultProducts(); }
+    }
+    let pass = await sGet('admin-password', true);
+    if(pass) this.adminPass = pass;
+    this.render();
+  },
+
+  async saveProducts(){
+    const r = await sSet('products', JSON.stringify(this.products), true);
+    if(!r) toast('Could not save — try smaller photos');
+    this.render();
+  },
+
+  async loadOrders(){
+    const keys = await sList('orders:', true);
+    const list = [];
+    for(const k of keys){
+      const v = await sGet(k, true);
+      if(v){ try{ list.push(JSON.parse(v)); }catch(e){} }
+    }
+    list.sort((a,b)=> b.ts - a.ts);
+    this.orders = list;
+  },
+
+  go(view, extra){
+    this.view = view;
+    if(extra) Object.assign(this, extra);
+    window.scrollTo(0,0);
+    this.render();
+  },
+
+  onLogoTap(){
+    this.logoTaps++;
+    clearTimeout(this.logoTapTimer);
+    this.logoTapTimer = setTimeout(()=>{ this.logoTaps = 0; }, 1500);
+    if(this.logoTaps >= 7){
+      this.logoTaps = 0;
+      this.go('adminLogin');
+    }
+  },
+
+  render(){
+    const root = document.getElementById('root');
+    root.innerHTML = this.renderView();
+    this.bind();
+  },
+
+  renderView(){
+    switch(this.view){
+      case 'home': return this.viewHome();
+      case 'detail': return this.viewDetail();
+      case 'checkout': return this.viewCheckout();
+      case 'success': return this.viewSuccess();
+      case 'adminLogin': return this.viewAdminLogin();
+      case 'admin': return this.viewAdmin();
+      default: return this.viewHome();
+    }
+  },
+
+  topbarStore(showBack){
+    return `
+    <div class="topbar">
+      ${showBack ? `<button class="back-btn" data-act="back">&larr;</button>` : `<div style="width:36px"></div>`}
+      <div class="brand" data-act="logo">
+        <div class="brand-mark">B</div>
+        <div class="brand-text">
+          <div class="l1">BANGALORE</div>
+          <div class="l2">MANUFACTURE HUB</div>
+        </div>
+      </div>
+      <div style="width:36px"></div>
+    </div>`;
+  },
+
+  productImg(p){
+    return (p.images && p.images.length) ? p.images[0] : PLACEHOLDER_SVG;
+  },
+
+  /* ---------- HOME ---------- */
+  viewHome(){
+    const active = this.products.filter(p=>p.active !== false);
+    const cards = active.map(p=>`
+      <div class="opt-card" data-act="open" data-id="${p.id}">
+        <div class="opt-img-wrap"><img src="${this.productImg(p)}" alt="${esc(p.name)}"></div>
+        <div class="opt-body">
+          ${p.badge ? `<span class="badge-pill">${esc(p.badge)}</span>` : ''}
+          <h3>${esc(p.size)}</h3>
+          <div class="size-label">${esc(p.name)}</div>
+          <ul class="opt-feat">
+            <li>📐 Size: ${esc(p.size)}</li>
+            <li>🍃 Foldable &amp; Lightweight</li>
+            <li>🛡️ Sturdy &amp; Durable</li>
+          </ul>
+          <div class="price-row">
+            <div><div class="amt-label">PRICE</div><div class="amt">${inr(p.price)}</div></div>
+            <div class="flag">View &rarr;</div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    return `
+      ${this.topbarStore(false)}
+      <div class="hero">
+        <span class="eyebrow">★ Premium Quality</span>
+        <h1>Study Tables<span class="accent">Built for Better Every Day</span></h1>
+        <div class="tag">Foldable. Durable. Space-Saving.</div>
+        <div class="feature-row">
+          <span>🛡️ Strong &amp; Sturdy</span>
+          <span>🍃 Lightweight Design</span>
+          <span>🏠 Perfect for Every Space</span>
+        </div>
+      </div>
+      <div class="section-pad" style="padding-top:20px;">
+        ${cards || `<div class="empty-state"><span class="ei">🪑</span>No tables available right now.<br>Please check back soon.</div>`}
+      </div>
+      <div class="trust-strip">
+        <div><span class="ti">🚚</span>Fast Delivery<br>Across Bangalore</div>
+        <div><span class="ti">🏅</span>Premium Quality<br>Best Materials</div>
+        <div><span class="ti">🎧</span>Customer Support<br>We're Here to Help</div>
+      </div>
+      <div class="footer-note">❤ Proudly Made in Bangalore, for Bangalore</div>
+    `;
+  },
+
+  /* ---------- DETAIL ---------- */
+  viewDetail(){
+    const p = this.products.find(x=>x.id===this.selectedId);
+    if(!p) return this.viewHome();
+    const imgs = (p.images && p.images.length) ? p.images : [PLACEHOLDER_SVG];
+    const colors = p.colors || [];
+    const swatches = colors.map((c,i)=>`
+      <div class="swatch ${i===this.selectedColor?'active':''}" data-act="color" data-i="${i}">
+        <div class="sw-dot" style="background:${c.hex}"></div>
+        <span>${esc(c.name)}</span>
+      </div>
+    `).join('');
+
+    return `
+      ${this.topbarStore(true)}
+      <div class="gallery">
+        <div class="gallery-main"><img src="${imgs[0]}" alt=""></div>
+        ${imgs.length>1 ? `<div class="gallery-dots">${imgs.map((_,i)=>`<span class="${i===0?'on':''}"></span>`).join('')}</div>` : ''}
+        <div class="best-price-tag">
+          <div class="bp">BEST PRICE</div>
+          <div class="amt">${inr(p.price)}</div>
+          <div class="fd">FREE DELIVERY</div>
+        </div>
+      </div>
+      <div class="detail-title">
+        <span class="sz">${esc(p.size)}</span>
+        <h2>${esc(p.name)}</h2>
+        <div class="sub">${esc(p.tagline || '')}</div>
+      </div>
+      <div class="feat-grid">
+        <div><span class="fi">🛡️</span>Strong &amp; Durable<span class="fs">Long Lasting Build</span></div>
+        <div><span class="fi">🍃</span>Foldable Design<span class="fs">Easy to Store</span></div>
+        <div><span class="fi">🪶</span>Lightweight<span class="fs">Easy to Carry</span></div>
+        <div><span class="fi">🏠</span>Space Saving<span class="fs">Perfect for Small Spaces</span></div>
+      </div>
+      <div class="about-block">
+        <h4>About this Table</h4>
+        <p>${esc(p.description || '')}</p>
+        <ul class="check-list">
+          <li>Premium Quality Material</li>
+          <li>Anti-Slip Legs</li>
+          <li>Rounded Corners</li>
+          <li>Easy to Clean Surface</li>
+        </ul>
+      </div>
+      <div class="spec-box">
+        <h5>☰ SPECIFICATIONS</h5>
+        <div class="spec-row"><span class="k">Size</span><span class="v">${esc(p.size)} (${esc(p.dims||'')})</span></div>
+        <div class="spec-row"><span class="k">Material</span><span class="v">${esc(p.material||'-')}</span></div>
+        <div class="spec-row"><span class="k">Weight</span><span class="v">${esc(p.weight||'-')}</span></div>
+        <div class="spec-row"><span class="k">Weight Capacity</span><span class="v">${esc(p.capacity||'-')}</span></div>
+        <div class="spec-row"><span class="k">Foldable</span><span class="v">${esc(p.foldable||'-')}</span></div>
+      </div>
+      ${colors.length ? `
+      <div class="color-block">
+        <h5>Available Colors</h5>
+        <div class="swatches">${swatches}</div>
+      </div>` : ''}
+      <div style="height:8px"></div>
+      <div class="sticky-buy">
+        <div class="pinfo"><div class="amt">${inr(p.price)}</div><div class="fd">FREE DELIVERY</div></div>
+        <button class="btn-gold" data-act="buy">🔒 BUY NOW</button>
+      </div>
+    `;
+  },
+
+  /* ---------- CHECKOUT ---------- */
+  viewCheckout(){
+    const p = this.products.find(x=>x.id===this.selectedId);
+    if(!p) return this.viewHome();
+    const color = (p.colors||[])[this.selectedColor];
+    const delivery = p.delivery || 0;
+    const total = Number(p.price) + Number(delivery);
+    const draft = this._draft || {name:'', mobile:'', area:''};
+    const errs = this._errs || {};
+
+    return `
+      ${this.topbarStore(true)}
+      <div class="steps">
+        <div class="step on"><div class="dot">1</div><div class="lbl">SUMMARY</div></div>
+        <div class="step-line"></div>
+        <div class="step on"><div class="dot">2</div><div class="lbl">DETAILS</div></div>
+        <div class="step-line"></div>
+        <div class="step"><div class="dot">3</div><div class="lbl">CONFIRM</div></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">🛒 Your Selected Table</div>
+        <div class="cart-row">
+          <img src="${this.productImg(p)}" alt="">
+          <div>
+            ${p.badge ? `<span class="badge-pill">${esc(p.size)}</span>` : `<span class="badge-pill">${esc(p.size)}</span>`}
+            <h4>${esc(p.name)}</h4>
+            ${color ? `<div class="meta"><span class="color-dot-sm" style="background:${color.hex}"></span>Color: ${esc(color.name)}</div>` : ''}
+            <div class="cprice">${inr(p.price)}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">👤 Your Details</div>
+        <div class="field">
+          <label>Full Name</label>
+          <input id="f-name" placeholder="Enter your full name" value="${esc(draft.name)}">
+          ${errs.name ? `<div class="err">${errs.name}</div>` : ''}
+        </div>
+        <div class="field">
+          <label>Mobile Number</label>
+          <input id="f-mobile" placeholder="Enter your 10 digit mobile number" value="${esc(draft.mobile)}" inputmode="numeric" maxlength="10">
+          ${errs.mobile ? `<div class="err">${errs.mobile}</div>` : ''}
+        </div>
+        <div class="field">
+          <label>Area / Locality</label>
+          <input id="f-area" placeholder="Enter your area or locality" value="${esc(draft.area)}">
+          ${errs.area ? `<div class="err">${errs.area}</div>` : ''}
+          <div class="hint">📍 We deliver to all areas across Bangalore</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">🏷️ Price Details</div>
+        <div class="price-line"><span>Table Price (${esc(p.size)})</span><span>${inr(p.price)}</span></div>
+        ${color ? `<div class="price-line"><span>Color: ${esc(color.name)}</span><span>₹0</span></div>` : ''}
+        <div class="price-line"><span>Delivery Charges</span><span>${inr(delivery)}</span></div>
+        <div class="price-line total"><span>Total Amount<br><small style="font-weight:500;color:var(--muted)">(Inclusive of all taxes)</small></span><span class="v">${inr(total)}</span></div>
+      </div>
+
+      <div class="trust-strip">
+        <div><span class="ti">🛡️</span>Safe &amp; Secure<br>100% Trusted</div>
+        <div><span class="ti">🚚</span>Fast Delivery<br>Across Bangalore</div>
+        <div><span class="ti">🎧</span>Customer Support<br>We're Here to Help</div>
+      </div>
+
+      <div class="bottom-pay">
+        <div class="tp"><div class="lbl">TOTAL PAYABLE</div><div class="amt">${inr(total)}</div></div>
+        <button class="btn-gold" data-act="confirm" style="flex:1;">🔒 CONFIRM ORDER</button>
+      </div>
+    `;
+  },
+
+  /* ---------- SUCCESS ---------- */
+  viewSuccess(){
+    const o = this.lastOrder;
+    return `
+      ${this.topbarStore(false)}
+      <div class="success-wrap">
+        <div class="success-icon">✓</div>
+        <h2>Order Confirmed!</h2>
+        <p>Thanks${o && o.name ? ', '+esc(o.name.split(' ')[0]) : ''}! Your study table is on its way.<br>Our team will call to confirm delivery details.</p>
+        <div class="order-id">ORDER ID: ${o ? esc(o.id) : ''}</div>
+        <div style="margin-top:26px;">
+          <button class="btn-gold" data-act="home" style="width:100%;">Continue Shopping</button>
+        </div>
+      </div>
+    `;
+  },
+
+  /* ---------- ADMIN LOGIN ---------- */
+  viewAdminLogin(){
+    const err = this._loginErr;
+    return `
+      ${this.topbarStore(true)}
+      <div class="admin-login-wrap">
+        <div class="lock-badge">🔒</div>
+        <h2>Admin Access</h2>
+        <p style="color:var(--muted); font-size:13px; margin-top:8px;">Enter the admin password to manage products and orders.</p>
+        <div class="field" style="text-align:left; margin-top:22px;">
+          <label>Password</label>
+          <input id="admin-pass-input" type="password" placeholder="Enter admin password">
+          ${err ? `<div class="err">${err}</div>` : ''}
+        </div>
+        <button class="btn-gold" data-act="admin-login" style="width:100%; margin-top:6px;">Unlock Admin</button>
+      </div>
+    `;
+  },
+
+  /* ---------- ADMIN DASHBOARD ---------- */
+  viewAdmin(){
+    if(this.editingProduct) return this.viewAdminProductForm();
+    let body = '';
+    if(this.adminTab === 'products'){
+      body = this.products.map(p=>`
+        <div class="admin-card">
+          <div class="admin-row">
+            <img src="${this.productImg(p)}" alt="">
+            <div style="flex:1;">
+              <h4>${esc(p.name)} · ${esc(p.size)}</h4>
+              <div class="meta">${inr(p.price)} · ${p.active===false?'Hidden':'Live'} · ${(p.images||[]).length} photo(s)</div>
+            </div>
+          </div>
+          <div class="admin-actions">
+            <div class="mini-btn edit" data-act="admin-edit" data-id="${p.id}">Edit</div>
+            <div class="mini-btn ${p.active===false?'gold':'edit'}" data-act="admin-toggle" data-id="${p.id}">${p.active===false?'Show':'Hide'}</div>
+            <div class="mini-btn del" data-act="admin-delete" data-id="${p.id}">Delete</div>
+          </div>
+        </div>
+      `).join('') || `<div class="empty-state"><span class="ei">📦</span>No products yet. Tap + to add one.</div>`;
+    } else if(this.adminTab === 'orders'){
+      body = this.orders.map(o=>`
+        <div class="admin-card">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <h4>${esc(o.name)}</h4>
+              <div class="meta">${esc(o.mobile)} · ${esc(o.area)}</div>
+              <div class="meta">${esc(o.productName)} (${esc(o.size)}) ${o.colorName ? '· '+esc(o.colorName) : ''}</div>
+              <div class="meta">${new Date(o.ts).toLocaleString('en-IN')}</div>
+            </div>
+            <span class="order-status ${o.status==='done'?'done':'new'}">${o.status==='done'?'Fulfilled':'New'}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+            <div style="font-weight:800; font-family:'Poppins';">${inr(o.total)}</div>
+            <div class="mini-btn ${o.status==='done'?'edit':'gold'}" style="flex:none; padding:8px 14px;" data-act="order-toggle" data-id="${o.id}">${o.status==='done'?'Mark New':'Mark Fulfilled'}</div>
+          </div>
+        </div>
+      `).join('') || `<div class="empty-state"><span class="ei">🧾</span>No orders yet.</div>`;
+    } else {
+      body = `
+        <div class="admin-card">
+          <div class="panel-head" style="margin-bottom:6px;">Change Admin Password</div>
+          <div class="field"><input id="new-pass" type="password" placeholder="New admin password"></div>
+          <button class="mini-btn gold" data-act="save-pass" style="width:100%;">Save Password</button>
+        </div>
+        <div class="admin-card">
+          <div class="panel-head" style="margin-bottom:6px;">Access Note</div>
+          <p style="font-size:12px; color:var(--muted); line-height:1.6;">This admin panel has no visible link on the storefront. To reach it, tap the logo in the top bar 7 times. Keep the password private and change it from the default.</p>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="topbar">
+        <button class="back-btn" data-act="admin-exit">&larr;</button>
+        <div class="brand"><div class="brand-mark" style="background:var(--navy);">A</div>
+          <div class="brand-text"><div class="l1">ADMIN PANEL</div><div class="l2">MANUFACTURE HUB</div></div>
+        </div>
+        <div style="width:36px"></div>
+      </div>
+      <div class="admin-tabs">
+        <div class="admin-tab ${this.adminTab==='products'?'on':''}" data-act="admin-tab" data-tab="products">Products</div>
+        <div class="admin-tab ${this.adminTab==='orders'?'on':''}" data-act="admin-tab" data-tab="orders">Orders</div>
+        <div class="admin-tab ${this.adminTab==='settings'?'on':''}" data-act="admin-tab" data-tab="settings">Settings</div>
+      </div>
+      <div style="padding-bottom:90px;">${body}</div>
+      ${this.adminTab==='products' ? `<div class="fab" data-act="admin-new">+</div>` : ''}
+    `;
+  },
+
+  viewAdminProductForm(){
+    const isNew = this.editingProduct === 'new';
+    const p = isNew ? {id:uid(), active:true, badge:'', name:'Study Table', size:'', dims:'', price:0, delivery:90, tagline:'', description:'', material:'', weight:'', capacity:'', foldable:'Yes', images:[], colors:[]} : this.editingProduct;
+
+    const imgThumbs = (p.images||[]).map((img,i)=>`
+      <div class="img-thumb"><img src="${img}"><div class="x" data-act="rm-img" data-i="${i}">×</div></div>
+    `).join('');
+
+    const colorChips = (p.colors||[]).map((c,i)=>`
+      <div class="color-chip"><span class="cd" style="background:${c.hex}"></span>${esc(c.name)}<span class="x" data-act="rm-color" data-i="${i}">×</span></div>
+    `).join('');
+
+    return `
+      <div class="topbar">
+        <button class="back-btn" data-act="admin-form-cancel">&larr;</button>
+        <div class="brand"><div class="brand-text"><div class="l1">${isNew?'ADD TABLE':'EDIT TABLE'}</div></div></div>
+        <div style="width:36px"></div>
+      </div>
+      <div style="padding:16px 18px 100px;">
+        <div class="field"><label>Product Name</label><input id="pf-name" value="${esc(p.name)}"></div>
+        <div class="field"><label>Size Label (e.g. 3 x 2 Feet)</label><input id="pf-size" value="${esc(p.size)}"></div>
+        <div class="field"><label>Dimensions (e.g. 60 cm x 40 cm x 28 cm)</label><input id="pf-dims" value="${esc(p.dims)}"></div>
+        <div class="field"><label>Price (₹)</label><input id="pf-price" type="number" value="${p.price}"></div>
+        <div class="field"><label>Delivery Charge (₹)</label><input id="pf-delivery" type="number" value="${p.delivery}"></div>
+        <div class="field"><label>Badge (e.g. BEST VALUE)</label><input id="pf-badge" value="${esc(p.badge||'')}"></div>
+        <div class="field"><label>Tagline</label><input id="pf-tagline" value="${esc(p.tagline||'')}"></div>
+        <div class="field"><label>Description</label><textarea id="pf-desc" rows="3">${esc(p.description||'')}</textarea></div>
+        <div class="field"><label>Material</label><input id="pf-material" value="${esc(p.material||'')}"></div>
+        <div class="field"><label>Weight</label><input id="pf-weight" value="${esc(p.weight||'')}"></div>
+        <div class="field"><label>Weight Capacity</label><input id="pf-capacity" value="${esc(p.capacity||'')}"></div>
+        <div class="field"><label>Foldable</label>
+          <select id="pf-foldable" style="width:100%; padding:11px 12px; border-radius:9px; border:1px solid var(--card-border); background:var(--bg);">
+            <option value="Yes" ${p.foldable==='Yes'?'selected':''}>Yes</option>
+            <option value="No" ${p.foldable==='No'?'selected':''}>No</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Photos (up to 4)</label>
+          <div class="img-thumbs">${imgThumbs}</div>
+          <label class="upload-box" for="pf-img-input">📷 Tap to upload a photo<br><span style="font-size:10px;">JPG/PNG · auto-resized</span></label>
+          <input type="file" id="pf-img-input" accept="image/*" style="display:none;">
+        </div>
+
+        <div class="field">
+          <label>Colors</label>
+          <div class="color-chip-row">${colorChips}</div>
+          <div style="display:flex; gap:8px; margin-top:8px;">
+            <input id="pf-color-name" placeholder="Color name" style="flex:1; border:1px solid var(--card-border); background:var(--bg); border-radius:9px; padding:10px;">
+            <input id="pf-color-hex" type="color" value="#5C3A21" style="width:46px; border:1px solid var(--card-border); border-radius:9px; background:var(--bg);">
+            <button class="mini-btn edit" style="flex:none; padding:10px 12px;" data-act="add-color">Add</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label style="display:flex; align-items:center; gap:8px;">
+            <input type="checkbox" id="pf-active" ${p.active!==false?'checked':''} style="width:auto;"> Visible on storefront
+          </label>
+        </div>
+
+        <button class="btn-gold" style="width:100%;" data-act="admin-save" data-new="${isNew?'1':'0'}">Save Table</button>
+      </div>
+    `;
+  },
+
+  /* ---------------- events ---------------- */
+  bind(){
+    const root = document.getElementById('root');
+
+    root.querySelectorAll('[data-act="logo"]').forEach(el=> el.addEventListener('click', ()=> this.onLogoTap()));
+    const back = root.querySelector('[data-act="back"]');
+    if(back) back.addEventListener('click', ()=>{
+      if(this.view==='detail') this.go('home');
+      else if(this.view==='checkout') this.go('detail');
+      else this.go('home');
+    });
+
+    root.querySelectorAll('[data-act="open"]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        this.selectedId = el.getAttribute('data-id');
+        this.selectedColor = 0;
+        this.go('detail');
+      });
+    });
+
+    root.querySelectorAll('[data-act="color"]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        this.selectedColor = Number(el.getAttribute('data-i'));
+        this.render();
+      });
+    });
+
+    const buyBtn = root.querySelector('[data-act="buy"]');
+    if(buyBtn) buyBtn.addEventListener('click', ()=>{ this._draft=null; this._errs=null; this.go('checkout'); });
+
+    const confirmBtn = root.querySelector('[data-act="confirm"]');
+    if(confirmBtn) confirmBtn.addEventListener('click', async ()=> this.submitOrder());
+
+    const homeBtn = root.querySelector('[data-act="home"]');
+    if(homeBtn) homeBtn.addEventListener('click', ()=> this.go('home'));
+
+    // admin login
+    const loginBtn = root.querySelector('[data-act="admin-login"]');
+    if(loginBtn) loginBtn.addEventListener('click', async ()=>{
+      const val = document.getElementById('admin-pass-input').value;
+      if(val === this.adminPass){
+        this._loginErr = null;
+        await this.loadOrders();
+        this.go('admin', {adminTab:'products'});
+      } else {
+        this._loginErr = 'Incorrect password. Try again.';
+        this.render();
+      }
+    });
+
+    const adminExit = root.querySelector('[data-act="admin-exit"]');
+    if(adminExit) adminExit.addEventListener('click', ()=> this.go('home'));
+
+    root.querySelectorAll('[data-act="admin-tab"]').forEach(el=>{
+      el.addEventListener('click', async ()=>{
+        this.adminTab = el.getAttribute('data-tab');
+        if(this.adminTab==='orders') await this.loadOrders();
+        this.render();
+      });
+    });
+
+    const newBtn = root.querySelector('[data-act="admin-new"]');
+    if(newBtn) newBtn.addEventListener('click', ()=>{ this.editingProduct='new'; this.render(); });
+
+    root.querySelectorAll('[data-act="admin-edit"]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const id = el.getAttribute('data-id');
+        const p = this.products.find(x=>x.id===id);
+        this.editingProduct = this.normalizeProduct(JSON.parse(JSON.stringify(p)));
+        this.render();
+      });
+    });
+
+    root.querySelectorAll('[data-act="admin-toggle"]').forEach(el=>{
+      el.addEventListener('click', async ()=>{
+        const id = el.getAttribute('data-id');
+        const p = this.products.find(x=>x.id===id);
+        p.active = p.active===false ? true : false;
+        await this.saveProducts();
+        toast(p.active ? 'Table is now live' : 'Table is now hidden');
+      });
+    });
+
+    root.querySelectorAll('[data-act="admin-delete"]').forEach(el=>{
+      el.addEventListener('click', async ()=>{
+        const id = el.getAttribute('data-id');
+        if(!confirm('Delete this table? This cannot be undone.')) return;
+        this.products = this.products.filter(x=>x.id!==id);
+        await this.saveProducts();
+        toast('Table deleted');
+      });
+    });
+
+    // product form
+    const cancelForm = root.querySelector('[data-act="admin-form-cancel"]');
+    if(cancelForm) cancelForm.addEventListener('click', ()=>{ this.editingProduct=null; this.render(); });
+
+    const imgInput = document.getElementById('pf-img-input');
+    if(imgInput) imgInput.addEventListener('change', (e)=> this.handleImageUpload(e));
+
+    root.querySelectorAll('[data-act="rm-img"]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const i = Number(el.getAttribute('data-i'));
+        this.editingProduct.images.splice(i,1);
+        this.render();
+      });
+    });
+
+    const addColorBtn = root.querySelector('[data-act="add-color"]');
+    if(addColorBtn) addColorBtn.addEventListener('click', ()=>{
+      const name = document.getElementById('pf-color-name').value.trim();
+      const hex = document.getElementById('pf-color-hex').value;
+      if(!name){ toast('Enter a color name'); return; }
+      if(!this.editingProduct.colors) this.editingProduct.colors = [];
+      this.editingProduct.colors.push({name, hex});
+      this.render();
+    });
+
+    root.querySelectorAll('[data-act="rm-color"]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const i = Number(el.getAttribute('data-i'));
+        this.editingProduct.colors.splice(i,1);
+        this.render();
+      });
+    });
+
+    const saveBtn = root.querySelector('[data-act="admin-save"]');
+    if(saveBtn) saveBtn.addEventListener('click', async ()=> this.saveProductForm());
+
+    // orders
+    root.querySelectorAll('[data-act="order-toggle"]').forEach(el=>{
+      el.addEventListener('click', async ()=>{
+        const id = el.getAttribute('data-id');
+        const o = this.orders.find(x=>x.id===id);
+        o.status = o.status==='done' ? 'new' : 'done';
+        await sSet('orders:'+o.id, JSON.stringify(o), true);
+        this.render();
+      });
+    });
+
+    // settings
+    const savePassBtn = root.querySelector('[data-act="save-pass"]');
+    if(savePassBtn) savePassBtn.addEventListener('click', async ()=>{
+      const val = document.getElementById('new-pass').value.trim();
+      if(val.length < 4){ toast('Password too short'); return; }
+      this.adminPass = val;
+      await sSet('admin-password', val, true);
+      toast('Password updated');
+      document.getElementById('new-pass').value='';
+    });
+  },
+
+  handleImageUpload(e){
+    const file = e.target.files[0];
+    if(!file) return;
+    if(!this.editingProduct.images) this.editingProduct.images = [];
+    if(this.editingProduct.images.length >= 4){ toast('Max 4 photos per table'); return; }
+    const reader = new FileReader();
+    reader.onload = (ev)=>{
+      const img = new Image();
+      img.onload = ()=>{
+        const maxW = 700;
+        const scale = Math.min(1, maxW/img.width);
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width*scale;
+        canvas.height = img.height*scale;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img,0,0,canvas.width,canvas.height);
+        const dataUrl = canvas.toDataURL('image/jpeg', 0.65);
+        if(!this.editingProduct) return; // form was closed before the photo finished processing
+        if(!this.editingProduct.images) this.editingProduct.images = [];
+        this.editingProduct.images.push(dataUrl);
+        this.render();
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  },
+
+  async saveProductForm(){
+    const p = this.editingProduct;
+    const isNew = document.querySelector('[data-act="admin-save"]').getAttribute('data-new') === '1';
+    p.name = document.getElementById('pf-name').value.trim() || 'Study Table';
+    p.size = document.getElementById('pf-size').value.trim();
+    p.dims = document.getElementById('pf-dims').value.trim();
+    p.price = Number(document.getElementById('pf-price').value) || 0;
+    p.delivery = Number(document.getElementById('pf-delivery').value) || 0;
+    p.badge = document.getElementById('pf-badge').value.trim();
+    p.tagline = document.getElementById('pf-tagline').value.trim();
+    p.description = document.getElementById('pf-desc').value.trim();
+    p.material = document.getElementById('pf-material').value.trim();
+    p.weight = document.getElementById('pf-weight').value.trim();
+    p.capacity = document.getElementById('pf-capacity').value.trim();
+    p.foldable = document.getElementById('pf-foldable').value;
+    p.active = document.getElementById('pf-active').checked;
+
+    if(!p.size){ toast('Please enter a size label'); return; }
+
+    const normalized = this.normalizeProduct(p);
+    if(isNew){
+      this.products.push(normalized);
+    } else {
+      const idx = this.products.findIndex(x=>x.id===normalized.id);
+      if(idx>-1) this.products[idx] = normalized;
+    }
+    this.editingProduct = null;
+    await this.saveProducts();
+    toast('Table saved');
+  },
+
+  async submitOrder(){
+    const name = document.getElementById('f-name').value.trim();
+    const mobile = document.getElementById('f-mobile').value.trim();
+    const area = document.getElementById('f-area').value.trim();
+    const errs = {};
+    if(!name) errs.name = 'Please enter your full name';
+    if(!/^[0-9]{10}$/.test(mobile)) errs.mobile = 'Enter a valid 10 digit mobile number';
+    if(!area) errs.area = 'Please enter your area or locality';
+
+    this._draft = {name, mobile, area};
+    if(Object.keys(errs).length){ this._errs = errs; this.render(); return; }
+    this._errs = null;
+
+    const p = this.products.find(x=>x.id===this.selectedId);
+    const color = (p.colors||[])[this.selectedColor];
+    const total = Number(p.price) + Number(p.delivery||0);
+    const order = {
+      id: 'BMH' + uid().toUpperCase(),
+      ts: Date.now(),
+      name, mobile, area,
+      productId: p.id,
+      productName: p.name,
+      size: p.size,
+      colorName: color ? color.name : '',
+      price: p.price,
+      delivery: p.delivery||0,
+      total,
+      status: 'new'
+    };
+    await sSet('orders:'+order.id, JSON.stringify(order), true);
+    this.lastOrder = order;
+    this.go('success');
+  }
+};
+
+window.addEventListener('error', (e)=>{
+  console.error('App error:', e.error || e.message);
+  try{ toast('Something went wrong — please try again.'); }catch(_){}
+});
+
+App.init();
+</script>
+</body>
+</html>
